@@ -74,4 +74,3 @@ if __name__ == "__main__":
     print(f"Built {len(samples)} windowed samples from {len(rows)} events")
     from collections import Counter
     label_counts = Counter(IDX_TO_LABEL[s[1]] for s in samples)
-    print(label_counts)
