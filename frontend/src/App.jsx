@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { fetchAlerts, fetchEntityHistory, checkHealth } from "./api.js";
+import { fetchAlerts, fetchEntityHistory, checkHealth } from "./services/api.js";
 import AlertQueue from "./components/AlertQueue.jsx";
 import EntityHistory from "./components/EntityHistory.jsx";
 import ExplainabilityPanel from "./components/ExplainabilityPanel.jsx";
