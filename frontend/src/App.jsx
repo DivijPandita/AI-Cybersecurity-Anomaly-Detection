@@ -1,12 +1,12 @@
 import { useState } from "react";
 import TopNav from "./components/TopNav.jsx";
 import { useHealth } from "./hooks/useHealth.js";
-import Dashboard from "./pages/Dashboard.jsx";
-import Alerts from "./pages/Alerts.jsx";
-import Entities from "./pages/Entities.jsx";
-import Analytics from "./pages/Analytics.jsx";
-import Model from "./pages/Model.jsx";
-import Settings from "./pages/Settings.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import Alerts from "./components/Alerts.jsx";
+import Entities from "./components/Entities.jsx";
+import Analytics from "./components/Analytics.jsx";
+import Model from "./components/Model.jsx";
+import Settings from "./components/Settings.jsx";
 
 const PAGES = {
   dashboard: Dashboard,
