@@ -2,18 +2,22 @@
   --bg: #0a0e13;
   --surface: #10161f;
   --surface-2: #161d28;
+  --surface-hover: #1c2531;
   --border: #212b38;
   --text-primary: #e8edf3;
   --text-secondary: #8a96a6;
   --text-tertiary: #56626f;
   --accent-cyan: #4cc9f0;
-  --accent-cyan-dim: #4cc9f033;
+  --accent-cyan-dim: #4cc9f01f;
+  --accent-green: #3ddc97;
   --risk-critical: #ff5d5d;
   --risk-high: #ff9f45;
   --risk-medium: #ffd166;
   --risk-low: #3ddc97;
   --mono: "JetBrains Mono", "SF Mono", monospace;
   --sans: "Inter", -apple-system, sans-serif;
+  --radius: 10px;
+  --radius-sm: 6px;
 }
 
 * { box-sizing: border-box; }
@@ -27,12 +31,14 @@ body {
 }
 
 #root { min-height: 100vh; }
-
 ::selection { background: var(--accent-cyan-dim); }
 
 button {
   font-family: var(--sans);
   cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
 }
 
 button:focus-visible,
@@ -46,8 +52,69 @@ button:focus-visible,
 }
 
 .mono { font-family: var(--mono); }
-
 .risk-critical { color: var(--risk-critical); }
 .risk-high { color: var(--risk-high); }
 .risk-medium { color: var(--risk-medium); }
 .risk-low { color: var(--risk-low); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.card-hoverable:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+
+.fade-in {
+  animation: fadeIn 300ms ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-2) 25%,
+    var(--surface-hover) 37%,
+    var(--surface-2) 63%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s linear infinite;
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
