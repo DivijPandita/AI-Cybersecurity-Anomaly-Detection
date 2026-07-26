@@ -1,0 +1,56 @@
+notes.txt
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+cyber/
+venv/
+
+# Environment Variables
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python Packaging
+build/
+dist/
+*.egg-info/
+
+# Model Files
+*.pt
+*.pth
+*.ckpt
+*.onnx
+models/checkpoints/
+
+# Databases
+*.db
+*.sqlite3
+
+# Generated Data
+*.csv
+*.parquet
+
+# Misc
+.cache/
