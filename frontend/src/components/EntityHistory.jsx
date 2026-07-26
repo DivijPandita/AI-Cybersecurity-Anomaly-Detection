@@ -1,6 +1,16 @@
+import { formatDateTime } from "../utils/format.js";
+
 export default function EntityHistory({ data, loading }) {
   if (loading) {
-    return <div style={{ padding: 20, color: "var(--text-tertiary)", fontSize: 13 }}>Loading entity history…</div>;
+    return (
+      <div style={{ padding: "16px 20px", display: "flex", flexDirection: "column", gap: 10 }}>
+        <div className="skeleton" style={{ height: 14, width: "40%" }} />
+        <div className="skeleton" style={{ height: 60, width: "100%" }} />
+        <div className="skeleton" style={{ height: 14, width: "30%", marginTop: 10 }} />
+        <div className="skeleton" style={{ height: 32, width: "100%" }} />
+        <div className="skeleton" style={{ height: 32, width: "100%" }} />
+      </div>
+    );
   }
   if (!data) {
     return (
@@ -60,7 +70,7 @@ export default function EntityHistory({ data, loading }) {
             }}
           >
             <span className="mono" style={{ color: "var(--text-tertiary)", flexShrink: 0 }}>
-              {new Date(e.timestamp).toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+              {formatDateTime(e.timestamp)}
             </span>
             <span style={{ color: "var(--text-primary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
               {e.resource_accessed}
