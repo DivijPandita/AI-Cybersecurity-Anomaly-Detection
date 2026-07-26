@@ -1,4 +1,5 @@
 import RiskMeter from "./RiskMeter.jsx";
+import { formatLabel } from "../utils/format.js";
 
 export default function ExplainabilityPanel({ alert }) {
   if (!alert) {
@@ -23,7 +24,7 @@ export default function ExplainabilityPanel({ alert }) {
       </div>
 
       <div style={{ fontSize: 13, marginBottom: 16, lineHeight: 1.5, color: "var(--text-secondary)" }}>
-        Classified as <strong style={{ color: "var(--text-primary)" }}>{alert.predicted_label.replace(/_/g, " ")}</strong>
+        Classified as <strong style={{ color: "var(--text-primary)" }}>{formatLabel(alert.predicted_label)}</strong>
         {alert.scoring_method && (
           <>
             {" "}via <span className="mono" style={{ color: "var(--text-tertiary)" }}>{alert.scoring_method}</span>
@@ -34,7 +35,7 @@ export default function ExplainabilityPanel({ alert }) {
 
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {factors.map((f, i) => (
-          <div key={i}>
+          <div key={i} className="fade-in" style={{ animationDelay: `${i * 60}ms` }}>
             <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 4 }}>
               <span style={{ color: "var(--text-primary)" }}>{f.factor}</span>
               <span className="mono" style={{ color: "var(--text-tertiary)" }}>{f.contribution.toFixed(2)}</span>
@@ -45,6 +46,7 @@ export default function ExplainabilityPanel({ alert }) {
                   width: `${(f.contribution / maxContribution) * 100}%`,
                   height: "100%",
                   background: "var(--accent-cyan)",
+                  transition: "width 400ms ease",
                 }}
               />
             </div>
